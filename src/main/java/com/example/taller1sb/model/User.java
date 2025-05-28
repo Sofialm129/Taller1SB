@@ -1,4 +1,4 @@
-package model;
+package com.example.taller1sb.model;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;

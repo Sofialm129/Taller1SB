@@ -1,5 +1,4 @@
-package model;
-
+package com.example.taller1sb.DTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,9 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-
-public class Product {
-
+public class ProductDTO {
     private Integer id;
     private String title;
     private float price;
