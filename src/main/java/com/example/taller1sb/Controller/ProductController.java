@@ -26,7 +26,7 @@ public class ProductController {
 
         List<ProductDTO> products = productService.getAll();
         model.addAttribute("products", products);
-        for (ProductDTO p: products){
+        for (ProductDTO p : products) {
             log.info("Product: {}", p);
         }
 

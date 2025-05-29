@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -26,11 +27,11 @@ public class UserController {
 
     @PostMapping("/login")
     public String login(@Valid @ModelAttribute UserDTO user, BindingResult result, Model model, HttpSession session) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "login";
         }
         Optional<UserDTO> user1 = userService.findByUsername(user.getUsername());
-        if(user1.isEmpty()){
+        if (user1.isEmpty()) {
             model.addAttribute("error", "Usuario no encontrado");
             return "login";
         }

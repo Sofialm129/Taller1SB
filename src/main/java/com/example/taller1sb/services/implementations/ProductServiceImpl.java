@@ -7,10 +7,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ProductServiceImpl implements IProductService {
     private final RestTemplate restTemplate;
+
     @Override
     public ProductDTO findById(Integer id) {
         return null;

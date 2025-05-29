@@ -1,7 +1,6 @@
 package com.example.taller1sb.services.implementations;
 
 import com.example.taller1sb.DTO.UserDTO;
-import com.example.taller1sb.model.User;
 import com.example.taller1sb.services.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,10 +14,12 @@ import java.util.Optional;
 public class UserServiceImpl implements IUserService {
 
     private final RestTemplate restTemplate;
+
     @Override
     public UserDTO findById(Integer id) {
         return null;
     }
+
     @Override
     public List<UserDTO> getAll() {
         UserDTO[] users = restTemplate.getForObject("/users", UserDTO[].class);
