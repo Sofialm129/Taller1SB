@@ -5,13 +5,10 @@ import com.example.taller1sb.services.IUserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -22,7 +19,7 @@ public class UserController {
 
     @GetMapping("/login")
     public String index(Model model) {
-        model.addAttribute("user", new UserDTO());
+        model.addAttribute("userDTO", new UserDTO());
         return "login";
     }
 
@@ -42,8 +39,8 @@ public class UserController {
             return "login";
         }
 
-        log.info("Usuario login: {}", user);
-        model.addAttribute("username", user.getUsername());
+        log.info("Usuario login: {}", user1.get());
+        model.addAttribute("username", user1.get().getUsername());
         return "products";
     }
 }

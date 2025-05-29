@@ -11,8 +11,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class UserDTO {
+
     private int id;
+    @NotEmpty(message = "Se requiere nombre de usuario")
     private String username;
     private String email;
+    @NotEmpty(message = "Se requiere contraseña")
     private String password;
 }
