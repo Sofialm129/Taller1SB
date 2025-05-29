@@ -23,11 +23,7 @@ public class ProductController {
         model.addAttribute("productDTO", new ProductDTO());
         UserDTO user = (UserDTO) session.getAttribute("userLogged");
         model.addAttribute("username", user.getUsername());
-        return "products";
-    }
 
-    @PostMapping("login/products")
-    public String showProduct(Model model) {
         List<ProductDTO> products = productService.getAll();
         model.addAttribute("products", products);
         for (ProductDTO p: products){
