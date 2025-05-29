@@ -9,7 +9,7 @@
 <div class="container">
     <h1>INICIAR SESIÓN</h1>
 
-    <form th:action="@{/login}" method="post" th:object="${userDTO}">
+    <form th:action="@{/login/products}" method="post" th:object="${userDTO}">
         <div th:if="${error}">
             <p th:text="${error}" style="color:red;"></p>
         </div>

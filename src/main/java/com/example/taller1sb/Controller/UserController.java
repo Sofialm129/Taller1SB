@@ -2,6 +2,7 @@ package com.example.taller1sb.Controller;
 
 import com.example.taller1sb.DTO.UserDTO;
 import com.example.taller1sb.services.IUserService;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +17,7 @@ import java.util.Optional;
 @Controller
 public class UserController {
     private final IUserService userService;
+    private final ProductController productController;
 
     @GetMapping("/login")
     public String index(Model model) {
@@ -24,7 +26,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(@Valid @ModelAttribute UserDTO user, BindingResult result, Model model) {
+    public String login(@Valid @ModelAttribute UserDTO user, BindingResult result, Model model, HttpSession session) {
         if(result.hasErrors()) {
             return "login";
         }
@@ -40,7 +42,7 @@ public class UserController {
         }
 
         log.info("Usuario login: {}", user1.get());
-        model.addAttribute("username", user1.get().getUsername());
-        return "products";
+        session.setAttribute("userLogged", user1.get());
+        return "redirect:login/products";
     }
 }
