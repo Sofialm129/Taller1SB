@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,5 +23,20 @@ public class UserServiceImpl implements IUserService {
     public List<UserDTO> getAll() {
         UserDTO[] users = restTemplate.getForObject("/users", UserDTO[].class);
         return List.of(users);
+    }
+
+    @Override
+    public Optional<UserDTO> findByUsername(String username) {
+        List<UserDTO> users = getAll();
+        for (UserDTO user : users) {
+            if (user.getUsername().equals(username)) {
+                return Optional.of(UserDTO.builder().
+                        id(user.getId()).
+                        username(user.getUsername()).
+                        password(user.getPassword()).
+                        build());
+            }
+        }
+        return Optional.empty();
     }
 }
