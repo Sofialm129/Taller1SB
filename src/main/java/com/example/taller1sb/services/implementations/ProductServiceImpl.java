@@ -18,7 +18,7 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public List<ProductDTO> getAll() {
-        ProductDTO[] productos = restTemplate.getForObject("/products", ProductDTO[].class);
-        return List.of(productos);
+        ProductDTO[] products = restTemplate.getForObject("/products", ProductDTO[].class);
+        return List.of(products);
     }
 }

@@ -3,13 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device.widht, inicial-scale=1">
-    <title>Footer</title>
+    <title>Products</title>
 </head>
 <body>
-<div th:fragment="products">
-    <footer>
-        <p>Desarrollado en spring boot</p>
-    </footer>
+<div>
+    <nav>
+        <span th:text="'Bienvenido '+ ${username}"></span>
+    </nav>
+
+    <div class="products">
+        <ul>
+            <li th:each="product: ${products}">
+                <span th:text="${product.title}"></span>
+                <span th:text="${product.price}"></span>
+                <span th:text="${product.description}"></span>
+            </li>
+        </ul>
+    </div>
+
 </div>
 </body>
 </html>
