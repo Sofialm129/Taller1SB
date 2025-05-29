@@ -17,7 +17,6 @@ import java.util.Optional;
 @Controller
 public class UserController {
     private final IUserService userService;
-    private final ProductController productController;
 
     @GetMapping("/login")
     public String index(Model model) {
@@ -32,7 +31,7 @@ public class UserController {
         }
         Optional<UserDTO> user1 = userService.findByUsername(user.getUsername());
         if(user1.isEmpty()){
-            model.addAttribute("error", "usuario no encontrado");
+            model.addAttribute("error", "Usuario no encontrado");
             return "login";
         }
 
