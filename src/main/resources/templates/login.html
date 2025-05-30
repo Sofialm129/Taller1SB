@@ -6,13 +6,14 @@
     <title>Login</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
-        *{
+
+        * {
             margin: 0;
             padding: 0;
             font-family: "Nunito", 'Segoe UI', sans-serif;
         }
 
-        .loginForm{
+        .loginForm {
             width: 300px;
             margin: 100px auto;
             padding: 20px;
@@ -20,12 +21,12 @@
             border-radius: 10px;
         }
 
-        .title{
+        .title {
             text-align: center;
             margin-bottom: 20px;
         }
 
-        .sendButton{
+        .sendButton {
             margin-top: 20px;
             width: 100%;
             padding: 10px;
@@ -39,7 +40,7 @@
             text-transform: uppercase;
         }
 
-        input[type="text"], input[type="password"]{
+        input[type="text"], input[type="password"] {
             width: 70%;
             padding: 10px;
             border: 1px solid #ccc;
@@ -47,13 +48,13 @@
             margin: 5px 0 10px;
         }
 
-        .sendButton:hover{
+        .sendButton:hover {
             background-color: #282828;
             color: #c1c5c7;
             transition-duration: 0.5s;
         }
 
-        .error{
+        .error {
             color: #fa4646;
             margin: 5px 0;
         }
@@ -63,20 +64,17 @@
 <body>
 <div class="container">
     <form class="loginForm" th:action="@{/login}" method="post" th:object="${userDTO}">
-        <h1 class="title">Welcome</h1>
-        <div th:if="${error}">
-            <p class="error" th:text="${error}"></p>
-        </div>
-
+        <h1 class="title">Login</h1>
         <div>
             <label for="username" class="form-label">Username:</label>
             <input type="text" id="username" th:field="*{username}">
-            <p class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
         </div>
         <div>
             <label for="password" class="form-label">Password:</label>
             <input type="password" id="password" th:field="*{password}">
             <p class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+            <p class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+            <div th:if="${error}"><p class="error" th:text="${error}"></p></div>
         </div>
         <input class="sendButton" type="submit" value="Log in">
     </form>
