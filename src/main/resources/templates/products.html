@@ -69,6 +69,13 @@
             margin: 3px 0 20px;
 
         }
+        li img {
+            display: block;
+            height: 135px;
+            border-radius: 20%;
+            border: 1px solid rgba(204, 204, 204, 0.46);
+            margin: 5px auto 0;
+        }
     </style>
 </head>
 <body>
@@ -83,6 +90,7 @@
             <li th:each="product: ${products}">
                 <span th:text="'Title: '+ ${product.title}"></span>
                 <span th:text="'Price: '+ ${product.price}"></span>
+                <img th:src="${product.image}" alt="product image">
             </li>
         </ul>
     </div>
