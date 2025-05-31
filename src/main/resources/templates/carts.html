@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Carts</title>
+</head>
+<body>
+<div>
+    <nav>
+        <span th:text="'Welcome '+ ${username}"></span><i class="tag fa-solid fa-tag"></i>
+    </nav>
+    <div>
+        <h2>Your carts</h2><i class="basket fa-solid fa-basket-shopping"></i>
+        <ul>
+            <li th:each="cart: ${carts}">
+                <span th:text="'Cart Id: '+ ${cart.getId()}"></span>
+                    <ul>
+                        <li th:each="product: ${cart.getProducts()}">
+                            <span th:text="'Product Id: '+${product.getProductId()}"></span>
+                            <span th:text="'Quantity: '+${product.getQuantity()}"></span>
+                        </li>
+                    </ul>
+            </li>
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,6 +1,5 @@
 package com.example.taller1sb.DTO;
 
-import com.example.taller1sb.model.Product;
 
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -15,5 +14,5 @@ import lombok.NoArgsConstructor;
 public class CartDTO {
     private Integer id;
     private Integer userId;
-    private List<Product> products;
+    private List<ProductCartDTO> products;
 }
