@@ -25,9 +25,40 @@
             margin: 20px auto;
         }
 
-        .tag {
+        nav a {
             display: inline-block;
-            text-align: center;
+            padding: 8px;
+            text-decoration: none;
+            color: #282828;
+        }
+
+        nav a:hover {
+            color: #dcdcdc;
+        }
+
+        nav button {
+            position: absolute;
+            left: 92%;
+            vertical-align: middle;
+            border: none;
+            border-radius: 7px;
+            background-color: #c1c5c7;
+            color: #282828;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        nav button:hover {
+            background-color: #282828;
+            color: #c1c5c7;
+            transition-duration: 0.5s;
+        }
+
+        .cart{
+            margin-left: 5px;
+        }
+
+        .tag {
             font-size: 26px;
             margin-left: 8px;
         }
@@ -51,8 +82,8 @@
             padding-bottom: 15px;
         }
 
-        li:hover{
-            background-color: rgba(0,0,0,0.1);
+        li:hover {
+            background-color: rgba(0, 0, 0, 0.1);
             border-radius: 7px;
             padding: 5px;
         }
@@ -62,13 +93,14 @@
             padding: 1px;
         }
 
-        .basket{
+        .basket {
             display: block;
             font-size: 20px;
             text-align: center;
             margin: 3px 0 20px;
 
         }
+
         li img {
             display: block;
             height: 135px;
@@ -82,8 +114,10 @@
 <div>
     <nav>
         <span th:text="'Welcome '+ ${username}"></span><i class="tag fa-solid fa-tag"></i>
+        <button type="button">
+            <a th:href="@{/login/carts}">Your carts<i class="cart fa-solid fa-cart-shopping"></i></a>
+        </button>
     </nav>
-
     <div class="products">
         <h2>Our products</h2><i class="basket fa-solid fa-basket-shopping"></i>
         <ul>
