@@ -1,7 +1,6 @@
 package com.example.taller1sb.services.implementations;
 
 import com.example.taller1sb.DTO.CartDTO;
-import com.example.taller1sb.DTO.ProductDTO;
 import com.example.taller1sb.services.ICartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

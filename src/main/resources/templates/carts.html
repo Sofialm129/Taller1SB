@@ -3,28 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/0507741b90.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+        * {
+            font-family: "Nunito", 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 3px;
+            font-size: 2rem;
+            text-transform: uppercase;
+            margin: 20px auto;
+        }
+
+        nav a {
+            position: absolute;
+            right: 92%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            text-transform: none;
+            text-decoration: none;
+            color: #282828;
+            letter-spacing: normal;
+
+        }
+
+        nav a:hover {
+            box-shadow: 0 4px 10px -5px rgba(0, 0, 0, 0.31);
+            transition-duration: 0.5s;
+            border: 1px solid #757575;
+            border-radius: 7px;
+            padding: 5px;
+            transition-delay: 0.2s;
+        }
+
+        nav a::before{
+            content: '⟨';
+            margin-right: 1px;
+        }
+
+        .carts {
+            width: 20%;
+            margin: 5px auto;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px 40px 10px;
+        }
+
+        .cartI {
+            font-size: 20px;
+            margin-left: 5px;
+            transform: rotate(45deg);
+        }
+
+        .basket {
+            margin-left: 4px;
+        }
+
+        .cart-content {
+            margin-left: 15px;
+            margin-bottom: 20px;
+            list-style-type: none;
+        }
+
+        .productId {
+            display: block;
+        }
+
+        .line {
+            color: #d9dddf;
+            margin: 5px 0;
+            border-width: 2px;
+            border-radius: 3px;
+            border-style: dashed;
+        }
+
+    </style>
     <title>Carts</title>
 </head>
 <body>
 <div>
     <nav>
-        <span th:text="'Welcome '+ ${username}"></span><i class="tag fa-solid fa-tag"></i>
+        <a th:href="@{/login/products}">Products<i class="basket fa-solid fa-basket-shopping"></i></a>
+        <span>Your carts</span><i class="cartI fa-solid fa-cart-shopping"></i>
     </nav>
-    <div>
-        <h2>Your carts</h2><i class="basket fa-solid fa-basket-shopping"></i>
+    <div class="carts">
         <ul>
             <li th:each="cart: ${carts}">
                 <span th:text="'Cart Id: '+ ${cart.getId()}"></span>
-                    <ul>
-                        <li th:each="product: ${cart.getProducts()}">
-                            <span th:text="'Product Id: '+${product.getProductId()}"></span>
-                            <span th:text="'Quantity: '+${product.getQuantity()}"></span>
-                        </li>
-                    </ul>
+                <ul class="cart-content">
+                    <li th:each="product: ${cart.getProducts()}">
+                        <span class="productId" th:text="'Product Id: '+${product.getProductId()}"></span>
+                        <span th:text="'Quantity: '+${product.getQuantity()}"></span>
+                        <hr class="line">
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>
-
 </div>
 </body>
 </html>
